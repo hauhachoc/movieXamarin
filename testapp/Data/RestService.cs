@@ -19,7 +19,7 @@ namespace testapp.Data
 
             client = new HttpClient();
             client.MaxResponseContentBufferSize = 256000;
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Content-Type", "application/x-www-form-urlencoded");
+            //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", authHeaderValue);
         }
 
         async Task<BaseUser> IRestService.RefreshDataAsync()
@@ -53,7 +53,7 @@ namespace testapp.Data
             {
                 var json = JsonConvert.SerializeObject(item);
                 Debug.WriteLine(@"             json:" + json.ToString());
-                var content = new StringContent(json, Encoding.UTF8, "application/x-www-form-urlencoded");
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
                 content.Headers.Add("app_token", Constants.token);
                 Debug.WriteLine(@"             content:" + content.ToString());
 
