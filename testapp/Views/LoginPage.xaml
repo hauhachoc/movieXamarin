@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:local="clr-namespace:testapp"
+    x:Class="testapp.testappPage"
+    BackgroundColor="White">
+
+    <StackLayout 
+        Margin="40,40,50,0"
+        Spacing="20"
+        Orientation="Vertical"
+        VerticalOptions="FillAndExpand"
+        HorizontalOptions="FillAndExpand" >
+
+        <Label 
+            TextColor="Black"
+        x:Name="lblName"
+        Text="Login" 
+            FontSize="40"
+        VerticalOptions="Center" 
+        HorizontalOptions="Center" />
+
+        <Entry 
+            x:Name="edtEmail"
+            TextColor="Black"
+            PlaceholderColor="Gray"
+            Placeholder="input your name"/>
+
+        <Entry 
+            x:Name="edtPw"
+            PlaceholderColor="Gray"
+            TextColor="Black"
+            Placeholder="input your name"/>
+
+        <Button 
+            TextColor="White"
+        BackgroundColor="Teal"
+        Text="Login" 
+        Clicked="Handle_Clicked"/>
+
+        <Button 
+            TextColor="White"
+        BackgroundColor="Gray"
+        Text="Forgot Password ?" />
+
+            <Button 
+            x:Name="btnRegister"
+            TextColor="White"
+        BackgroundColor="Silver"
+        Text="Register" 
+        Clicked="RegisterClickEvent"/>
+
+    </StackLayout>
+
+</ContentPage>
