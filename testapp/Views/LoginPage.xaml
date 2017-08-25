@@ -36,7 +36,7 @@
             TextColor="White"
         BackgroundColor="Teal"
         Text="Login" 
-        Clicked="Handle_Clicked"/>
+        Clicked="LoginClick"/>
 
         <Button 
             TextColor="White"

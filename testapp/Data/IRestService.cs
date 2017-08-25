@@ -8,5 +8,7 @@ namespace testapp
         Task<BaseUser> RefreshDataAsync();
 
         Task RegisterItemAsync(BaseUser item);
+
+        Task LoginItemAsync(string email, string pw);
 	}
 }

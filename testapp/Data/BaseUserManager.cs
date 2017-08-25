@@ -18,6 +18,11 @@ namespace testapp.Data
 			return restService.RefreshDataAsync();
 		}
 
+		public Task LoginTaskAsync(string  email, string pw)
+		{
+            return restService.LoginItemAsync( email, pw);
+		}
+
 		public Task RegisterTaskAsync(BaseUser item)
 		{
             return restService.RegisterItemAsync(item);

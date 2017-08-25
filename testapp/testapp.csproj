@@ -53,6 +53,7 @@
     </Compile>
     <Compile Include="Models\Response\UserResponse.cs" />
     <Compile Include="Models\Response\BaseResponse.cs" />
+    <Compile Include="Models\Response\Message.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">

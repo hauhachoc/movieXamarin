@@ -1,14 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace testapp
 {
     public class BaseUser
     {
+        [JsonProperty("email")]
         public string email { get; set; }
+
+        [JsonProperty("password")]
 	    public string password { get; set; }
+
+        [JsonProperty("full_name")]
 		public string full_name { get; set; }
+
+        [JsonProperty("gender")]
 		public string gender { get; set; }
+
+        [JsonProperty("birthday")]
         public string birthday { get; set; }
 
 		public BaseUser( string fn, string em,string pw)

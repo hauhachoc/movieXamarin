@@ -10,10 +10,9 @@ namespace testapp
             InitializeComponent();
         }
 
-        void Handle_Clicked(object sender, EventArgs e)
+        async void LoginClick(object sender, EventArgs e)
         {
-            //var name = edtName.Text;
-            //lblName.Text =name;
+            await App.userManager.LoginTaskAsync(edtEmail.Text, edtPw.Text);
         }
 
         void RegisterClickEvent(object sender, EventArgs e)
