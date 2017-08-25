@@ -10,9 +10,10 @@ namespace testapp
             InitializeComponent();
         }
 
-        async void LoginClick(object sender, EventArgs e)
+         void LoginClick(object sender, EventArgs e)
         {
-            await App.userManager.LoginTaskAsync(edtEmail.Text, edtPw.Text);
+             App.userManager.LoginTaskAsync(edtEmail.Text, edtPw.Text);
+             Navigation.PushAsync(new Views.MoviesPage());
         }
 
         void RegisterClickEvent(object sender, EventArgs e)
