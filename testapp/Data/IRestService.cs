@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using testapp.Models.Response;
+
 namespace testapp
 {
 	public interface IRestService
 	{
-        Task<BaseUser> RefreshDataAsync();
+        Task<FilmsResponse> GetFilmsItemAsync(string page, string per_page);
 
-        Task RegisterItemAsync(BaseUser item);
+        Task<BaseResponse> RegisterItemAsync(BaseUser item);
 
-        Task LoginItemAsync(string email, string pw);
-	}
+        Task<BaseResponse> LoginItemAsync(string email, string pw);
+    }
 }

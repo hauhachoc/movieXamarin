@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using testapp.Models.Response;
 
 namespace testapp.Data
 {
@@ -13,19 +13,19 @@ namespace testapp.Data
 			restService = service;
 		}
 
-            public Task<BaseUser> GetTasksAsync()
+            public Task<FilmsResponse> GetFilmsTasksAsync(string page, string per_page)
 		{
-			return restService.RefreshDataAsync();
+            return restService.GetFilmsItemAsync(page, per_page);
 		}
 
-		public Task LoginTaskAsync(string  email, string pw)
+		public Task<BaseResponse> LoginTaskAsync(string  email, string pw)
 		{
             return restService.LoginItemAsync( email, pw);
 		}
 
-		public Task RegisterTaskAsync(BaseUser item)
+		public Task<BaseResponse> RegisterTaskAsync(BaseUser item)
 		{
-            return restService.RegisterItemAsync(item);
+            return restService.RegisterItemAsync( item);
 		}
 	}
 }

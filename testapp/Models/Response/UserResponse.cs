@@ -1,7 +1,7 @@
 ﻿using System;
 namespace testapp.Models.Response
 {
-    public class UserResponse:BaseResponse
+    public class UserResponse
     {
         public string updated_at { set; get; }
         public string email { set; get; }

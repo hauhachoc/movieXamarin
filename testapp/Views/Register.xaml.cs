@@ -1,54 +1,39 @@
 ﻿using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 using System;
 using System.Diagnostics;
+using testapp.Models.Response;
+using System.Threading.Tasks;
 
 namespace testapp.Views
 {
     public partial class Register : ContentPage
     {
+
+        public BaseResponse Response { set; get; }
+        public Task<BaseResponse> task;
+
         public Register()
         {
             InitializeComponent();
         }
 
-       async void Register_Clicked(object sender, EventArgs e)
+        void Register_Clicked(object sender, EventArgs e)
         {
 				var user = new BaseUser(edtName.Text, edtEmail.Text, edtPw.Text);
-				await App.userManager.RegisterTaskAsync(user);
-				//await Navigation.PopAsync();
+    			Response = new BaseResponse();
+    			task = App.userManager.RegisterTaskAsync(user);
+    			Response = task.Result;
+    			if (Response.error)
+    			{
+    				ShowAlert(null, "Register Failed");
+    			}
+    			else
+    			{
+    				Debug.WriteLine(@"             Success:" + Response.data.ToString());
+                    ShowAlert(null, "Register successful");
+				    Navigation.PopAsync();
+			}
         }
-
-   //     public bool ValidateView(){
-            
-   //         if(edtName.Text.Length==0){
-   //             ShowAlert("Alert", "Name is empty");
-   //             return false;
-   //         }else{
-   //             return true;
-   //         }
-
-			//if (edtEmail.Text.Length == 0)
-			//{
-			//	ShowAlert("Alert", "Email is empty");
-			//return false;
-   //         }
-			//else
-			//{
-			//	return true;
-			//}
-
-   //         if (edtPw.Text.Length == 0 || edtConfirmPw .Text.Length == 0)
-			//{
-			//	ShowAlert("Alert", "Password is empty");
-			//    return false;
-   //         }
-			//else
-			//{
-			//	return true;
-			//}
-        //    return false;
-        //}
 
         public void ShowAlert(string title, string content){
 			DisplayAlert(title, content, "OK");

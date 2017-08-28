@@ -5,7 +5,7 @@
     x:Class="testapp.Views.MoviesPage"
     xmlns:local="clr-namespace:testapp" >
 	<ContentPage.ToolbarItems>
-    <ToolbarItem Name="Clear Notes" Clicked="OnClearNotes" Order="Primary" Priority="0"/>
+    <ToolbarItem Name="Clear Notes"  Order="Primary" Priority="0"/>
   </ContentPage.ToolbarItems>
   <ContentPage.Content>
     <StackLayout Orientation="Vertical">
@@ -18,10 +18,10 @@
           <DataTemplate>
             <ViewCell>
               <ViewCell.ContextActions>
-                <MenuItem Clicked="OnDelete" Text="Delete" IsDestructive="True" CommandParameter="{Binding}" />
+                <MenuItem  Text="Delete" IsDestructive="True" CommandParameter="{Binding}" />
               </ViewCell.ContextActions>
               <StackLayout Orientation="Vertical" Padding="10,0,10,0">
-                <Label Text="{Binding}" HorizontalOptions="Fill" LineBreakMode="TailTruncation" />
+                <Label Text="{Binding Film{title}}" HorizontalOptions="Fill" LineBreakMode="TailTruncation" />
               </StackLayout>
             </ViewCell>
           </DataTemplate>

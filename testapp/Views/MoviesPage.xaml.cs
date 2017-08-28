@@ -2,29 +2,32 @@
 using Xamarin.Forms;
 using System.Collections.ObjectModel;
 using testapp.Utils;
+using testapp.Models.Response;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace testapp.Views
 {
     public partial class MoviesPage : ContentPage
     {
 
-		ObservableCollection<string> notes;
-		IPlatformPreferences prefs;
+        IList<Film> films;
+        Task<FilmsResponse> data;
 
         public MoviesPage()
         {
 			InitializeComponent();
-			prefs = DependencyService.Get<IPlatformPreferences>();
-			if (prefs == null)
+			data = App.userManager.GetFilmsTasksAsync("1", "20");
+			FilmsResponse filmRes = data.Result;
+			if (filmRes.error)
 			{
-				notes = new ObservableCollection<string>();
+				ShowAlert(null, "get films failed");
 			}
 			else
 			{
-				notes = new ObservableCollection<string>(prefs.getUserInfo());
+				films = data.Result.data;
 			}
-
-			listView.ItemsSource = notes;
+			listView.ItemsSource = films;
 			listView.ItemSelected += (object sender, SelectedItemChangedEventArgs e) => {
 				if (e.SelectedItem == null)
 					return;
@@ -34,29 +37,17 @@ namespace testapp.Views
 			};
 
 			add.Clicked += (object sender, EventArgs e) => {
-				notes.Add(note.Text);
-				note.Text = "";
-				if (prefs != null)
+				if (Application.Current.Properties.ContainsKey("token"))
 				{
-					prefs.saveUserInfo(notes);
+                    string token = Application.Current.Properties["token"] as string;
+                    note.Text = token;
 				}
 			};
         }
 
-		public void OnDelete(object sender, EventArgs e)
+		public void ShowAlert(string title, string content)
 		{
-			var mi = ((MenuItem)sender);
-			string item = (string)mi.CommandParameter;
-			notes.Remove(item);
-		}
-
-		public void OnClearNotes(object sender, EventArgs e)
-		{
-			notes.Clear();
-			if (prefs != null)
-			{
-				prefs.saveUserInfo(notes);
-			}
+			DisplayAlert(title, content, "OK");
 		}
 
     }

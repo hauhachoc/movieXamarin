@@ -15,7 +15,7 @@ namespace testapp.Models.Response
         public Message message { get; set; }
 
         [JsonProperty("data")]
-        public object data { get; set; }
+        public UserResponse data { get; set; }
 
         public BaseResponse()
         {
