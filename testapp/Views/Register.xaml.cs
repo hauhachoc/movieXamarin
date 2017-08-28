@@ -31,7 +31,8 @@ namespace testapp.Views
     			{
     				Debug.WriteLine(@"             Success:" + Response.data.ToString());
                     ShowAlert(null, "Register successful");
-				    Navigation.PopAsync();
+				    Application.Current.Properties["token"] = Response.data.access_token;
+				    Navigation.PushAsync(new Views.MoviesPage()).ConfigureAwait(false);
 			}
         }
 

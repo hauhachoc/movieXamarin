@@ -38,9 +38,6 @@ namespace testapp
 			this.birthday = "";
         }
 
-        public static implicit operator List<object>(BaseUser v)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }

@@ -34,7 +34,7 @@ namespace testapp
 			{
                 Debug.WriteLine(@"             Success:" + Response.data.ToString());
                 Application.Current.Properties["token"] =  Response.data.access_token;
-				Navigation.PushAsync(new Views.MoviesPage());
+				Navigation.PushAsync(new Views.MoviesPage()).ConfigureAwait(false);
 			}
         }
 
